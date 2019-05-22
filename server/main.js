@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import Links from '/imports/api/links';
+import '/imports/api/methods';
 import '/imports/api/server/publications';
 
 function insertLink(title, url) {
