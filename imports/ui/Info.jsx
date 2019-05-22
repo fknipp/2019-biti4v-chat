@@ -9,10 +9,13 @@ class Info extends Component {
     );
 
     return (
+      this.props.ready ?
       <div>
         <h2>Learn Meteor!</h2>
         <ul>{ links }</ul>
       </div>
+      :
+      <h2>Wird geladen…</h2>
     );
   }
 
@@ -26,7 +29,9 @@ class Info extends Component {
 }
 
 export default InfoContainer = withTracker(() => {
+  const subscriptionHandle = Meteor.subscribe('links.all');
   return {
+    ready: subscriptionHandle.ready(),
     links: Links.find().fetch(),
   };
 })(Info);
